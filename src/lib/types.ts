@@ -11,9 +11,11 @@ export interface Course {
   id: string;
   name: string;
   address: string;
-  distance: string;
+  distance: string; // e.g., "5 miles", "nearby"
   imageUrl: string;
   dataAiHint: string;
+  details: string; // Detailed description from AI
+  reasoning: string; // Why AI recommended this course
 }
 
 export interface ScorecardHole {
