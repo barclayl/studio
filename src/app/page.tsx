@@ -96,7 +96,7 @@ export default function HomePage() {
       
       {/* Footer - minimal, main footer in (app)/layout.tsx */}
        <footer className="py-6 text-center text-sm text-muted-foreground border-t">
-        © {new Date().getFullYear()} Swift Caddie. All rights reserved.
+        © {new Date().getFullYear()} Quatro Fi. All rights reserved.
       </footer>
     </div>
   );

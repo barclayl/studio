@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Swift Caddie',
+  title: 'Quatro Fi',
   description: 'Your ultimate golf companion app.',
 };
 
