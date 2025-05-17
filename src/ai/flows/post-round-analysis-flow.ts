@@ -9,7 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {z}from 'genkit';
 import type { ScorecardHole } from '@/lib/types'; // Assuming ScorecardHole is defined here
 
 // Define Zod schema for ScorecardHole if not already globally available and imported
@@ -57,107 +57,7 @@ export async function analyzeRound(input: PostRoundAnalysisInput): Promise<PostR
   return postRoundAnalysisFlow(input);
 }
 
-// Helper to create a string representation of the scorecard for the prompt
-const formatScorecardForPrompt = (scorecard: ScorecardHole[]): string => {
-  let table = "Hole | Par | Score | Putts\n-----|-----|-------|------\n";
-  scorecard.forEach(h => {
-    table += `${h.hole.toString().padEnd(4)} | ${h.par.toString().padEnd(3)} | ${(h.score ?? '-').toString().padEnd(5)} | ${(h.putts ?? '-').toString().padEnd(5)}\n`;
-  });
-  const totalScore = scorecard.reduce((sum, h) => sum + (h.score ?? 0), 0);
-  const totalPar = scorecard.reduce((sum, h) => sum + h.par, 0);
-  const totalPutts = scorecard.reduce((sum, h) => sum + (h.putts ?? 0), 0);
-  table += `\nTotal Score: ${totalScore} (Par: ${totalPar}, To Par: ${totalScore - totalPar >= 0 ? '+' : ''}${totalScore - totalPar})\n`;
-  table += `Total Putts: ${totalPutts}\n`;
-  return table;
-};
-
-
 const prompt = ai.definePrompt({
-  name: 'postRoundAnalysisPrompt',
-  input: {schema: PostRoundAnalysisInputSchema},
-  output: {schema: PostRoundAnalysisOutputSchema},
-  prompt: `You are an expert golf performance analyst and coach.
-Analyze the provided golf round data and the golfer's self-assessment to provide actionable insights and an improvement plan.
-
-Scorecard Data:
-{{{formatScorecardForPrompt scorecard}}}
-
-Additional Stats:
-{{#if fairwaysHit}}Fairways Hit: {{fairwaysHit}} (assume out of 14 driveable holes unless specified otherwise){{/if}}
-{{#if greensInRegulation}}Greens in Regulation: {{greensInRegulation}} / 18{{/if}}
-{{#if sandSaves}}Sand Saves: {{sandSaves}}{{/if}}
-{{#if upAndDowns}}Up and Downs: {{upAndDowns}}{{/if}}
-
-Golfer's Self-Assessment:
-"{{selfAssessment}}"
-
-Based on all this information:
-1.  Provide an 'overallScoreAnalysis' summarizing the performance relative to par and any general trends.
-2.  Identify 2-3 'keyStrengths' demonstrated in this round.
-3.  Pinpoint 2-3 primary 'areasForImprovement'.
-4.  List 2-4 'statisticalHighlights'. For each, include the stat name, its value, and a brief insight. Examples: "Birdie Conversion", "Putting Average on GIRs", "Scramble Success Rate". If specific stats like GIRs/Fairways are not provided, make general observations based on score and putts per hole.
-5.  Suggest 2-3 'personalizedDrills' to address the identified weaknesses. For each drill, provide its name, a brief description, and the focus area.
-6.  Offer a concise 'nextRoundFocus' - one key mental or strategic tip for the golfer to concentrate on in their next round.
-
-Be constructive and encouraging.
-Ensure your output is a JSON object strictly matching the defined output schema.
-`,
-});
-
-const postRoundAnalysisFlow = ai.defineFlow(
-  {
-    name: 'postRoundAnalysisFlow',
-    inputSchema: PostRoundAnalysisInputSchema,
-    outputSchema: PostRoundAnalysisOutputSchema,
-  },
-  async (input) => {
-    // The formatScorecardForPrompt function needs to be accessible within the prompt templating.
-    // Genkit prompts can use Handlebars helpers. Let's register it.
-    // However, direct function calls within prompt template like `{{{formatScorecardForPrompt scorecard}}}`
-    // might not work as expected without specific Handlebars helper registration in Genkit.
-    // For simplicity, we'll pass the formatted string directly if direct helper usage is complex.
-    // Or, the LLM can be instructed to interpret the JSON structure of the scorecard directly.
-
-    // Alternative: Pass scorecard as JSON and let the model interpret it, or pre-process.
-    // For now, we'll rely on the LLM to understand the JSON structure from the schema.
-    // The prompt string above will use 'scorecard' directly and the LLM should be smart enough.
-    // Let's adjust the prompt slightly for clarity if not using a helper.
-    // The prompt: `Scorecard Data (JSON):\n{{{JSONstringify scorecard}}}` could be an option.
-    // For robust display, let's assume the model can interpret the structure.
-
-    // To use formatScorecardForPrompt, it would typically be registered as a Handlebars helper.
-    // Since that's more involved with Genkit's setup, we'll rely on the detailed Zod schema description
-    // and direct JSON representation for the LLM. The prompt has been written to guide the LLM
-    // to interpret the `scorecard` field based on its schema.
-    // A simpler way for the prompt if not using helpers:
-    // Scorecard: (Each item: hole, par, score, putts)
-    // {{#each scorecard}}
-    // Hole {{hole}}: Par {{par}}, Score {{score}}, Putts {{putts}}
-    // {{/each}}
-    // This is better for Handlebars. I will update the prompt part.
-
-    const customInput = {
-        ...input,
-        // If we pre-format, pass it as a new field.
-        // formattedScorecard: formatScorecardForPrompt(input.scorecard) // And use {{formattedScorecard}} in prompt
-    };
-
-    const {output} = await prompt(customInput); // or just input if not pre-formatting
-    return output!;
-  }
-);
-// Helper registration for Handlebars (conceptual, actual registration depends on Genkit's Handlebars instance)
-// This is more advanced and typically not done directly in the flow file without specific Genkit APIs.
-// For now, the prompt template will use Handlebars' #each block.
-// No, the `JSONstringify` or direct object passing with clear schema description is the Genkit way.
-// The prompt has been updated to instruct the LLM on how to interpret the `scorecard` array of objects.
-// Let's re-verify the prompt structure for scorecard.
-// The current prompt is `Scorecard Data:\n{{{formatScorecardForPrompt scorecard}}}`. This implies `formatScorecardForPrompt` is a global Handlebars helper.
-// This is unlikely to be pre-registered.
-// The most straightforward way for Genkit is to pass the raw data and let the model understand it via schema or use basic Handlebars.
-// Let's change the prompt to use #each for the scorecard.
-
-const updatedPrompt = ai.definePrompt({
   name: 'postRoundAnalysisPrompt',
   input: {schema: PostRoundAnalysisInputSchema},
   output: {schema: PostRoundAnalysisOutputSchema},
@@ -200,9 +100,7 @@ const postRoundAnalysisFlow = ai.defineFlow(
     outputSchema: PostRoundAnalysisOutputSchema,
   },
   async (input) => {
-    const {output} = await updatedPrompt(input);
+    const {output} = await prompt(input);
     return output!;
   }
 );
-
-
