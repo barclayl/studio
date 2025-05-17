@@ -1,5 +1,5 @@
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3 } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -8,10 +8,11 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/courses', label: 'Find Course', icon: MapPin },
   { href: '/club-selection', label: 'Club Selector', icon: Sparkles },
   { href: '/scorecard', label: 'Scorecard', icon: ListChecks },
-  { href: '/maps', label: 'Course Maps', icon: Flag }, // Using Flag as a general map icon
+  { href: '/maps', label: 'Course Maps', icon: Flag }, 
   { href: '/swing-analysis', label: 'Swing Analysis', icon: Camera },
   { href: '/mental-coach', label: 'Mental Coach', icon: Brain },
   { href: '/round-analysis', label: 'Round Analysis', icon: BarChart3 },
+  { href: '/equipment-ai', label: 'Equipment AI', icon: ShoppingBag },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -63,9 +64,39 @@ export const SKILL_LEVELS: SkillLevel[] = [
   { value: "advanced", label: "Advanced" },
 ];
 
+export const EQUIPMENT_SKILL_LEVELS: SkillLevel[] = [
+  { value: "beginner", label: "Beginner" },
+  { value: "intermediate", label: "Intermediate" },
+  { value: "advanced", label: "Advanced" },
+  { value: "professional", label: "Professional" },
+];
+
+export const BUDGET_OPTIONS: { value: string; label: string }[] = [
+  { value: "economy", label: "Economy (Best Value)" },
+  { value: "mid-range", label: "Mid-Range (Balance of Price & Performance)" },
+  { value: "premium", label: "Premium (Top Tier, Latest Tech)" },
+  { value: "no-limit", label: "No Limit (Best regardless of cost)" },
+];
+
+export const EQUIPMENT_TYPES: string[] = [
+  "Driver",
+  "Fairway Wood",
+  "Hybrid",
+  "Set of Irons",
+  "Driving Irons / Utility Iron",
+  "Wedge (Pitching, Gap, Sand, Lob)",
+  "Putter",
+  "Golf Balls",
+  "Golf Bag",
+  "Golf Shoes",
+  "Rangefinder / GPS Device",
+  "Complete Set (Beginner)",
+];
+
+
 export const INITIAL_SCORECARD: ScorecardHole[] = Array.from({ length: 18 }, (_, i) => ({
   hole: i + 1,
-  score: null, // Default to null for better UX in forms
-  putts: null, // Default to null
-  par: (i < 9 ? (i % 2 === 0 ? 4 : (i === 4 ? 3 : 5)) : (i % 3 === 0 ? 3 : (i === 13 || i === 17 ? 5 : 4))), // More varied default pars
+  score: null, 
+  putts: null, 
+  par: (i < 9 ? (i % 2 === 0 ? 4 : (i === 4 ? 3 : 5)) : (i % 3 === 0 ? 3 : (i === 13 || i === 17 ? 5 : 4))), 
 }));

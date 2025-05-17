@@ -7,3 +7,4 @@ import '@/ai/flows/course-selection-flow.ts';
 import '@/ai/flows/swing-analysis-flow.ts';
 import '@/ai/flows/mental-game-coach-flow.ts';
 import '@/ai/flows/post-round-analysis-flow.ts';
+import '@/ai/flows/equipment-suggestion-flow.ts';
