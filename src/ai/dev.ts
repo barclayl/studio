@@ -1,5 +1,9 @@
+
 import { config } from 'dotenv';
 config();
 
 import '@/ai/flows/optimal-club-selection.ts';
 import '@/ai/flows/course-selection-flow.ts';
+import '@/ai/flows/swing-analysis-flow.ts';
+import '@/ai/flows/mental-game-coach-flow.ts';
+import '@/ai/flows/post-round-analysis-flow.ts';
