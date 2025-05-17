@@ -1,5 +1,6 @@
+
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -13,6 +14,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/mental-coach', label: 'Mental Coach', icon: Brain },
   { href: '/round-analysis', label: 'Round Analysis', icon: BarChart3 },
   { href: '/equipment-ai', label: 'Equipment AI', icon: ShoppingBag },
+  { href: '/practice-planner', label: 'Practice Planner', icon: Target },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -64,11 +66,12 @@ export const SKILL_LEVELS: SkillLevel[] = [
   { value: "advanced", label: "Advanced" },
 ];
 
+// Also used for Practice Planner skill level
 export const EQUIPMENT_SKILL_LEVELS: SkillLevel[] = [
   { value: "beginner", label: "Beginner" },
   { value: "intermediate", label: "Intermediate" },
   { value: "advanced", label: "Advanced" },
-  { value: "professional", label: "Professional" },
+  { value: "professional", label: "Professional" }, // Professional might be too high for general practice plans, consider removing or AI handles it.
 ];
 
 export const BUDGET_OPTIONS: { value: string; label: string }[] = [
@@ -91,6 +94,20 @@ export const EQUIPMENT_TYPES: string[] = [
   "Golf Shoes",
   "Rangefinder / GPS Device",
   "Complete Set (Beginner)",
+];
+
+export const GOLF_IMPROVEMENT_AREAS: string[] = [
+  "Driving Accuracy",
+  "Driving Distance",
+  "Iron Play (Approach Shots)",
+  "Short Game (Chipping/Pitching)",
+  "Bunker Play",
+  "Putting (Short Putts)",
+  "Putting (Lag Putting)",
+  "Course Management",
+  "Mental Game",
+  "Consistency",
+  "Specific Shot Shaping (e.g., Draws, Fades)",
 ];
 
 
