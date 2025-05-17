@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,8 +14,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
+          <div className="grid gap-6 lg:grid-cols-1 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-accent/10 px-3 py-1 text-sm font-medium text-accent-foreground">
                   Your Ultimate Golf Companion
@@ -22,11 +23,11 @@ export default function HomePage() {
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-primary">
                   Welcome to {APP_NAME}
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                <p className="max-w-[600px] text-muted-foreground md:text-xl mx-auto lg:mx-0">
                   Elevate your game with AI-powered club suggestions, detailed course information, interactive scorecards, and more.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <div className="flex flex-col gap-2 min-[400px]:flex-row sm:justify-center lg:justify-start">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   <Link href="/courses">
                     Get Started
@@ -40,14 +41,7 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            <Image
-              src="https://placehold.co/600x400.png"
-              data-ai-hint="golf course landscape"
-              width={600}
-              height={400}
-              alt="Golf course"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square shadow-xl"
-            />
+            {/* Image removed from here */}
           </div>
         </div>
       </section>
@@ -79,6 +73,11 @@ export default function HomePage() {
                     {feature.label === 'Club Selector' && 'Get AI-powered recommendations for the optimal club.'}
                     {feature.label === 'Scorecard' && 'Keep track of your scores and stats with our easy-to-use virtual scorecard.'}
                     {feature.label === 'Course Maps' && 'Interactive maps with yardages and hole layouts (Coming Soon).'}
+                    {feature.label === 'Swing Analysis' && 'Upload an image of your swing for AI-powered feedback.'}
+                    {feature.label === 'Mental Coach' && 'Get AI advice for your mental game challenges.'}
+                    {feature.label === 'Round Analysis' && 'Analyze your scores and stats with AI insights.'}
+                    {feature.label === 'Equipment AI' && 'Receive AI recommendations for golf equipment.'}
+                    {feature.label === 'Practice Planner' && 'Generate personalized AI practice plans.'}
                   </CardDescription>
                 </CardContent>
                 <CardContent className="pt-0">
