@@ -1,5 +1,5 @@
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3 } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -9,6 +9,9 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/club-selection', label: 'Club Selector', icon: Sparkles },
   { href: '/scorecard', label: 'Scorecard', icon: ListChecks },
   { href: '/maps', label: 'Course Maps', icon: Flag }, // Using Flag as a general map icon
+  { href: '/swing-analysis', label: 'Swing Analysis', icon: Camera },
+  { href: '/mental-coach', label: 'Mental Coach', icon: Brain },
+  { href: '/round-analysis', label: 'Round Analysis', icon: BarChart3 },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -62,7 +65,7 @@ export const SKILL_LEVELS: SkillLevel[] = [
 
 export const INITIAL_SCORECARD: ScorecardHole[] = Array.from({ length: 18 }, (_, i) => ({
   hole: i + 1,
-  score: 0,
-  putts: 0,
-  par: 4, // Default par, can be adjusted
+  score: null, // Default to null for better UX in forms
+  putts: null, // Default to null
+  par: (i < 9 ? (i % 2 === 0 ? 4 : (i === 4 ? 3 : 5)) : (i % 3 === 0 ? 3 : (i === 13 || i === 17 ? 5 : 4))), // More varied default pars
 }));
