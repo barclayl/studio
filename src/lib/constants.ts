@@ -1,6 +1,6 @@
 
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target, CalendarClock, Ticket } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target, CalendarClock, Ticket, UserCircle, Award } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -18,6 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/tee-time-predictor', label: 'Tee Time Predictor', icon: CalendarClock },
   { href: '/tournament-tickets', label: 'Tournament Tickets', icon: Ticket },
   { href: '/golf-buddy-advisor', label: 'Golf Buddy Advisor', icon: Users },
+  { href: '/player-profiles', label: 'Player Profiles', icon: Award },
 ];
 
 export const MOCK_COURSES: Course[] = [
