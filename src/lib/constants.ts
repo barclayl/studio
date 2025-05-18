@@ -1,6 +1,6 @@
 
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target, CalendarClock } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target, CalendarClock, Ticket } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -16,6 +16,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/equipment-ai', label: 'Equipment AI', icon: ShoppingBag },
   { href: '/practice-planner', label: 'Practice Planner', icon: Target },
   { href: '/tee-time-predictor', label: 'Tee Time Predictor', icon: CalendarClock },
+  { href: '/tournament-tickets', label: 'Tournament Tickets', icon: Ticket },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -134,3 +135,22 @@ export const NUMBER_OF_PLAYERS_OPTIONS: { value: number; label: string }[] = [
   { value: 3, label: "3 Players" },
   { value: 4, label: "4 Players" },
 ];
+
+
+export const TICKET_TYPES_OPTIONS: { value: string; label: string }[] = [
+    { value: "any", label: "Any Type" },
+    { value: "practice round", label: "Practice Round" },
+    { value: "single day competition", label: "Single Day (Competition)" },
+    { value: "weekend pass", label: "Weekend Pass" },
+    { value: "full week pass", label: "Full Week Pass" },
+    { value: "hospitality package", label: "Hospitality Package" },
+];
+
+export const BUDGET_INDICATION_OPTIONS: { value: string; label: string }[] = [
+    { value: "any", label: "Any Price / Not Specified" },
+    { value: "affordable", label: "Affordable / Budget-Friendly" },
+    { value: "mid-range", label: "Mid-Range" },
+    { value: "premium", label: "Premium / Best Available" },
+];
+
+    
