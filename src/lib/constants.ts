@@ -1,6 +1,6 @@
 
 import type { NavItem, Course, ScorecardHole, SkillLevel } from '@/lib/types';
-import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target } from 'lucide-react';
+import { MapPin, Calculator, ListChecks, Sparkles, Home, Users, Settings, Flag, Camera, Brain, BarChart3, ShoppingBag, Target, CalendarClock } from 'lucide-react';
 
 export const APP_NAME = "Quatro Fi";
 
@@ -15,6 +15,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/round-analysis', label: 'Round Analysis', icon: BarChart3 },
   { href: '/equipment-ai', label: 'Equipment AI', icon: ShoppingBag },
   { href: '/practice-planner', label: 'Practice Planner', icon: Target },
+  { href: '/tee-time-predictor', label: 'Tee Time Predictor', icon: CalendarClock },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -117,3 +118,19 @@ export const INITIAL_SCORECARD: ScorecardHole[] = Array.from({ length: 18 }, (_,
   putts: null, 
   par: (i < 9 ? (i % 2 === 0 ? 4 : (i === 4 ? 3 : 5)) : (i % 3 === 0 ? 3 : (i === 13 || i === 17 ? 5 : 4))), 
 }));
+
+export const TIME_PREFERENCES: { value: string; label: string }[] = [
+  { value: "early morning", label: "Early Morning (Before 8 AM)" },
+  { value: "morning", label: "Morning (8 AM - 12 PM)" },
+  { value: "mid-day", label: "Mid-Day (12 PM - 2 PM)" },
+  { value: "afternoon", label: "Afternoon (2 PM - 5 PM)" },
+  { value: "twilight", label: "Twilight (After 5 PM)" },
+  { value: "any", label: "Any Time" },
+];
+
+export const NUMBER_OF_PLAYERS_OPTIONS: { value: number; label: string }[] = [
+  { value: 1, label: "1 Player" },
+  { value: 2, label: "2 Players" },
+  { value: 3, label: "3 Players" },
+  { value: 4, label: "4 Players" },
+];
