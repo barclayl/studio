@@ -17,6 +17,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: '/practice-planner', label: 'Practice Planner', icon: Target },
   { href: '/tee-time-predictor', label: 'Tee Time Predictor', icon: CalendarClock },
   { href: '/tournament-tickets', label: 'Tournament Tickets', icon: Ticket },
+  { href: '/golf-buddy-advisor', label: 'Golf Buddy Advisor', icon: Users },
 ];
 
 export const MOCK_COURSES: Course[] = [
@@ -67,6 +68,12 @@ export const SKILL_LEVELS: SkillLevel[] = [
   { value: "intermediate", label: "Intermediate" },
   { value: "advanced", label: "Advanced" },
 ];
+
+export const USER_SKILL_LEVELS_WITH_ANY: SkillLevel[] = [
+  ...SKILL_LEVELS,
+  { value: "any", label: "Any Skill Level" },
+];
+
 
 // Also used for Practice Planner skill level
 export const EQUIPMENT_SKILL_LEVELS: SkillLevel[] = [
@@ -151,6 +158,39 @@ export const BUDGET_INDICATION_OPTIONS: { value: string; label: string }[] = [
     { value: "affordable", label: "Affordable / Budget-Friendly" },
     { value: "mid-range", label: "Mid-Range" },
     { value: "premium", label: "Premium / Best Available" },
+];
+
+export const PLAYING_FREQUENCY_OPTIONS: { value: string; label: string }[] = [
+    { value: "weekends only", label: "Weekends Only" },
+    { value: "weekday mornings", label: "Weekday Mornings" },
+    { value: "weekday afternoons", label: "Weekday Afternoons" },
+    { value: "weekday evenings", label: "Weekday Evenings" },
+    { value: "1-2 times a week", label: "1-2 Times a Week" },
+    { value: "2-3 times a month", label: "2-3 Times a Month" },
+    { value: "once a month", label: "Once a Month" },
+    { value: "flexible/varies", label: "Flexible / Varies" },
+];
+
+export const GAME_TYPE_PREFERENCE_OPTIONS: { value: string; label: string }[] = [
+    { value: "casual rounds", label: "Casual Rounds" },
+    { value: "competitive matches", label: "Competitive Matches" },
+    { value: "practice range buddy", label: "Practice Range Buddy" },
+    { value: "social golf group (9 holes)", label: "Social Golf Group (9 Holes)" },
+    { value: "social golf group (18 holes)", label: "Social Golf Group (18 Holes)" },
+    { value: "tournament partner", label: "Tournament Partner" },
+    { value: "focused on improvement", label: "Focused on Improvement" },
+    { value: "just for fun/exercise", label: "Just for Fun/Exercise" },
+];
+
+export const AGE_GROUP_PREFERENCE_OPTIONS: { value: string; label: string }[] = [
+    { value: "any age", label: "Any Age Group" },
+    { value: "under 18", label: "Under 18" },
+    { value: "18-25", label: "18-25" },
+    { value: "26-35", label: "26-35" },
+    { value: "36-45", label: "36-45" },
+    { value: "46-55", label: "46-55" },
+    { value: "56-65", label: "56-65" },
+    { value: "65+", label: "65+" },
 ];
 
     
